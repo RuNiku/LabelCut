@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+mainClassName = 'com.github.runiku.labelcut.Main'
+group 'com.github.runiku'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.18'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox-tools', version: '2.0.18'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox-debugger', version: '2.0.18'
+    compile group: 'org.apache.pdfbox', name: 'fontbox', version: '2.0.18'
+    compile group: 'org.apache.pdfbox', name: 'preflight', version: '2.0.18'
+    compile group: 'org.apache.pdfbox', name: 'xmpbox', version: '2.0.18'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+javafx {
+    version = '13'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    mainClassName = mainClassName
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+apply plugin: 'java'

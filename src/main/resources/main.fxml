@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.Pane?>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.runiku.labelcut.Controller">
+  <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button fx:id="fileButton" mnemonicParsing="false" onAction="#onFileButtonAction" text="open PDF" />
+            <Button mnemonicParsing="false" onAction="#onOpenADRAction" text="Adobe Reader">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file-pdf-filled.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane HBox.hgrow="ALWAYS" />
+            <CheckBox fx:id="autoReaderCheckbox" mnemonicParsing="false" onAction="#onAutoReaderCheckboxAction" text="Adobe Reader auto open" />
+            <Button fx:id="settingsButton" onAction="#onSettingsButtonAction" mnemonicParsing="false" text="Settings" />
+            <Button mnemonicParsing="false" onAction="#onInfoAction" text="">
+                <graphic>
+                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="question-outlined-1.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </items>
+      </ToolBar>
+      <AnchorPane VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <tabs>
+                  <Tab closable="false" text="PDF Fit">
+                     <content>
+                        <ScrollPane fx:id="scrollPaneFit" fitToHeight="true" fitToWidth="true" onScroll="#onScrollScrollPaneFit" prefHeight="200.0" prefWidth="200.0">
+                           <content>
+                              <StackPane>
+                                 <children>
+                                    <Group>
+                                       <children>
+                                          <ImageView fx:id="pageViewFit" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </Group>
+                                 </children>
+                              </StackPane>
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Original PDF">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane fx:id="scrollPaneOriginal" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <StackPane>
+                                       <children>
+                                          <Group>
+                                             <children>
+                                                <ImageView fx:id="pageViewOriginal" fitHeight="600.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </Group>
+                                       </children>
+                                    </StackPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>
